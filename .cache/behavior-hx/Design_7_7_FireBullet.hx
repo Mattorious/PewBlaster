@@ -79,22 +79,17 @@ class Design_7_7_FireBullet extends ActorScript
 	{
 		if(_Fired)
 		{
-			if(!(_BulletCreated.isAlive()))
-			{
-				_CanFire = false;
-				_Fired = true;
-				createRecycledActor(bullet, (actor.getXCenter() + _XOffset), (actor.getYCenter() + _YOffset), Script.BACK);
-				_BulletCreated = getLastCreatedActor();
-				getLastCreatedActor().setX((getLastCreatedActor().getX() - ((getLastCreatedActor().getWidth()) / 2)));
-				getLastCreatedActor().setY((getLastCreatedActor().getY() - ((getLastCreatedActor().getHeight()) / 2)));
-				getLastCreatedActor().setAngle(Utils.RAD * ((((Utils.DEG * actor.getAngle()) + shooterangle) - bulletangle)));
-				getLastCreatedActor().setVelocity((((Utils.DEG * actor.getAngle()) + shooterangle) - 180), speed);
-				playSound(sound);
-			}
+			_Fired = true;
+			createRecycledActor(bullet, (actor.getXCenter() + _XOffset), (actor.getYCenter() + _YOffset), Script.BACK);
+			_BulletCreated = getLastCreatedActor();
+			getLastCreatedActor().setX((getLastCreatedActor().getX() - ((getLastCreatedActor().getWidth()) / 2)));
+			getLastCreatedActor().setY((getLastCreatedActor().getY() - ((getLastCreatedActor().getHeight()) / 2)));
+			getLastCreatedActor().setAngle(Utils.RAD * ((((Utils.DEG * actor.getAngle()) + shooterangle) - bulletangle)));
+			getLastCreatedActor().setVelocity((((Utils.DEG * actor.getAngle()) + shooterangle) - 180), speed);
+			playSound(sound);
 		}
 		else
 		{
-			_CanFire = false;
 			_Fired = true;
 			createRecycledActor(bullet, actor.getXCenter(), actor.getYCenter(), Script.MIDDLE);
 			_BulletCreated = getLastCreatedActor();
